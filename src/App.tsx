@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <FestiveSnowfall isDark={true} />
+      <FestiveSnowfall/>
       <div>
         <h1 style={{ fontSize: "3rem", margin: "2rem 0 1rem" }}>
           🎄 Happy Holidays!! 🎅
