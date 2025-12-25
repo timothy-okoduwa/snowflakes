@@ -1,15 +1,31 @@
 import React, { useEffect, useState } from "react";
 
-const FestiveSnowfall = ({ isDark = false }) => {
-  const [snowflakes, setSnowflakes] = useState([]);
-  const [isActive, setIsActive] = useState(false);
+interface Snowflake {
+  id: number;
+  left: number;
+  size: number;
+  duration: number;
+  delay: number;
+  opacity: number;
+  drift: number;
+}
+
+interface FestiveSnowfallProps {
+  isDark?: boolean;
+}
+
+const FestiveSnowfall: React.FC<FestiveSnowfallProps> = ({
+  isDark = false,
+}) => {
+  const [snowflakes, setSnowflakes] = useState<Snowflake[]>([]);
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   // Snowflake color based on theme
   const snowflakeColor = isDark ? "#FFFFFF" : "#86d8f0";
 
   // Check if we're in the festive period
   useEffect(() => {
-    const checkFestivePeriod = () => {
+    const checkFestivePeriod = (): void => {
       const now = new Date();
       const month = now.getMonth() + 1;
       const day = now.getDate();
@@ -36,7 +52,7 @@ const FestiveSnowfall = ({ isDark = false }) => {
       return;
     }
 
-    const flakes = [];
+    const flakes: Snowflake[] = [];
     const numberOfSnowflakes = 50;
 
     for (let i = 0; i < numberOfSnowflakes; i++) {
@@ -115,8 +131,8 @@ const FestiveSnowfall = ({ isDark = false }) => {
 export default FestiveSnowfall;
 
 // DEMO - Remove this section when using in your app
-function Demo() {
-  const [isDark, setIsDark] = useState(false);
+function Demo(): React.ReactElement {
+  const [isDark, setIsDark] = useState<boolean>(false);
 
   return (
     <div
