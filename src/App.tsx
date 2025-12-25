@@ -3,7 +3,7 @@ import "./App.css";
 import FestiveSnowfall from "./components/FestiveSnowfall";
 
 function App() {
-  const [daysUntilNewYear, setDaysUntilNewYear] = useState(() => {
+  const [daysUntilNewYear] = useState<number>(() => {
     const today = new Date();
     const newYear = new Date(today.getFullYear() + 1, 0, 1);
     const diff = newYear.getTime() - today.getTime();
